@@ -72,6 +72,21 @@ describe("Interpreter", function() {
         });
     });
 
+    describe("Condition", function() {
+        it("CondTrueBranch", function() {
+            let code = parseFile('cond/cond1.ks');
+            let interp: Interpreter = new Interpreter();
+            let r = interp.exec(code);
+            assert.equal(r, 2);
+        });
+        it("CondElseBranch", function() {
+            let code = parseFile('cond/cond2.ks');
+            let interp: Interpreter = new Interpreter();
+            let r = interp.exec(code);
+            assert.equal(r, 3);
+        });
+    });
+
     describe("Foreach", function() {
         it("ForeachArr", function() {
             let code = parseFile('foreach/foreach_arr.ks');

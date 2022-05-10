@@ -54,7 +54,7 @@ export class ConditionHandler {
     // 在栈中删除进行下个条件分支判断的指令
     // stateMgr.addOp(OpCode.ValStack_PopFrameIgnoreResult);
     stateMgr.addOp(OpCode.OpStack_RemoveNextNext);
-    stateMgr.addOp(OpCode.Node_RunNode, ifTrueClause);
+    stateMgr.addOp(OpCode.Node_RunBlock, ifTrueClause);
 
     // 如果条件判断失败，会执行下面的指令
     if (pairIdx < (exprAndBlockPairs.length - 1)) {
@@ -62,7 +62,7 @@ export class ConditionHandler {
       stateMgr.addOp(OpCode.Ctrl_ConditionPair, lastContMemo);
     }
     else {
-      stateMgr.addOp(OpCode.Node_RunNode, fallbackBlock);
+      stateMgr.addOp(OpCode.Node_RunBlock, fallbackBlock);
     }
     stateMgr.opBatchCommit();    
   }

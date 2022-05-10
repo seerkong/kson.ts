@@ -15,7 +15,7 @@
             "args": [
                 "test/Interpreter.test.ts",
                 "-g",
-                "'AddWith4Args'",
+                "'CondTrueBranch'",
                 "--no-timeouts"
             ],
             "cwd": "${workspaceRoot}",

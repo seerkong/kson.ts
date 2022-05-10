@@ -12,6 +12,12 @@ export class KeywordOpExpanders {
     'begin': function(stateMgr: StateMgr, nodeToRun: any) : any {
       BlockHandler.expandBlock(stateMgr, nodeToRun.next)
     },
+    'do': function(stateMgr: StateMgr, nodeToRun: any) : any {
+      BlockHandler.expandBlock(stateMgr, nodeToRun.next)
+    },
+    'else_do': function(stateMgr: StateMgr, nodeToRun: any) : any {
+      BlockHandler.expandBlock(stateMgr, nodeToRun.next)
+    },
     'func': FuncHandler.expandDeclareFunc,
     'cond': ConditionHandler.expandCondition,
     'if': IfElseHandler.expandIfElse,

@@ -3,9 +3,9 @@ import { OperationContState } from "../../StateManagement/OperationStack";
 import { StateMgr } from "../../StateMgr";
 import { NodeHelper } from "../../Util/NodeHelper";
 
-// (if expr truebranch)
-// eg: (if (gt 5 4) true)
-// (if expr truebranch else elsebranch)
+// (if expr (do truebranch))
+// eg: (if (gt 5 4) (do 5))
+// (if expr (do truebranch) (else_do elsebranch))
 export class IfElseHandler {
   public static expandIfElse(stateMgr: StateMgr, nodeToRun: any) {
     
@@ -13,8 +13,8 @@ export class IfElseHandler {
     let conditionExpr = nodeToRun.next.core;
     let ifTrueBranch = nodeToRun.next.next.core;
     let ifFalseBranch = null;
-    if (nodeToRun.next.next.next != null && nodeToRun.next.next.next.next != null) {
-      ifFalseBranch = nodeToRun.next.next.next.next.core;
+    if (nodeToRun.next.next.next != null) {
+      ifFalseBranch = nodeToRun.next.next.next.core;
     }
     exprAndBlockPairs.push({
       expr: conditionExpr,  // condition expr
