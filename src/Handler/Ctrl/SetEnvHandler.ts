@@ -6,7 +6,7 @@ export class SetEnvHandler {
   public static expandSetEnv(stateMgr: StateMgr, nodeToRun: any) {
     stateMgr.opBatchStart();
     stateMgr.addOp(OpCode.ValStack_PushFrame);
-    let varName = nodeToRun.next.core;
+    let varName = nodeToRun.next.core.value;
     let varExpr = nodeToRun.next.next.core;
     stateMgr.addOp(OpCode.ValStack_PushFrame);
     stateMgr.addOp(OpCode.Node_RunNode, varExpr);

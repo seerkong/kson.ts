@@ -42,10 +42,10 @@ export class StackMachine<T> {
     }
 
     public jumpTo(valStackIdx) {
-        for (let i  = valStackIdx + 1; i <= this.stackTop_; i++) {
-            this.items_[i] = null;
+        let popTimes = this.stackTop_ - valStackIdx;
+        for (let i  = 0; i < popTimes; i++) {
+            this.popValue();
         }
-        this.stackTop_ = valStackIdx;
     }
 
     public pushItems(items: T[]) {

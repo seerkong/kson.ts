@@ -7,8 +7,8 @@ import { NodeHelper } from "../../Util/NodeHelper";
 import { KsonType } from "../../Model/KsonType"
 import { LambdaFunction } from "../../Model/LambdaFunction";
 
-// define func name: (func name [arg1 arg2] funcbody)
-// anonymous: (func [arg1 arg2] funcbody)
+// define func name: (func name [arg1, arg2, ...] funcbody)
+// anonymous: (func [arg1, arg2, ...] funcbody)
 export class FuncHandler {
   public static expandDeclareFunc(stateMgr: StateMgr, nodeToRun: any) {
     let funcName = null;

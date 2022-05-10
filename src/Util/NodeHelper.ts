@@ -14,7 +14,10 @@ export class NodeHelper {
     else if (typeof node == 'boolean') {
       return KsonType.Boolean;
     }
-    else if (typeof node == 'object') {
+    else if (node == null) {
+      return KsonType.Null;
+    }
+    else {
       let innerType = node.__type;
       if (innerType === 'Word') {
         return KsonType.Word;
@@ -31,9 +34,6 @@ export class NodeHelper {
       else {
         return KsonType.Map;
       }
-    }
-    else {
-      return KsonType.Null;
     }
   }
 

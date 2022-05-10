@@ -2,11 +2,12 @@ import { OpCode } from "../../OpCode";
 import { OperationContState } from "../../StateManagement/OperationStack";
 import { StateMgr } from "../../StateMgr";
 
+// (var a 5)
 export class DeclareVarHandler {
   public static expandDeclareVar(stateMgr: StateMgr, nodeToRun: any) {
     stateMgr.opBatchStart();
     stateMgr.addOp(OpCode.ValStack_PushFrame);
-    let varName = nodeToRun.next.core;
+    let varName = nodeToRun.next.core.value;
     let varExpr = null;
     if (nodeToRun.next.next != null) {
       varExpr = nodeToRun.next.next.core;

@@ -15,7 +15,7 @@ export class BlockHandler {
 
     if (sentences.length > 0) {
       stateMgr.addOp(OpCode.ValStack_PushFrame);
-      for (let i = 0; i < sentences.length - 2; i++) {
+      for (let i = 0; i < sentences.length - 1; i++) {
         stateMgr.addOp(OpCode.Node_RunNode, sentences[i]);
         stateMgr.addOp(OpCode.ValStack_PopValue)
       }

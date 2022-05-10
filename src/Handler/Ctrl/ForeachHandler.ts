@@ -3,7 +3,7 @@ import { Env } from "../../StateManagement/Env";
 import { OperationContState } from "../../StateManagement/OperationStack";
 import { StateMgr } from "../../StateMgr";
 import { NodeHelper } from "../../Util/NodeHelper";
-// (foreach x in items (writeline x))
+// (foreach x in items (writeln x))
 export class ForeachHandler {
   public static expandForeach(stateMgr: StateMgr, nodeToRun: any) {
     let itemVarName = NodeHelper.getWordInner(nodeToRun.next.core);

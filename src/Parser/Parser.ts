@@ -50,9 +50,13 @@ export class Parser {
     }
 
     boolean() {
-        const bool = this.currentToken.value;
+        const boolStr = this.currentToken.value;
         this.consume(TokenType.BOOLEAN);
-        return bool;
+        if (boolStr === 'true') {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     value() {
