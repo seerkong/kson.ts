@@ -4,7 +4,6 @@
   "description": "",
   "main": "./lib/main.js",
   "scripts": {
-    "prepare": "tsc -p ./",
     "compile": "tsc -p ./",
     "watch": "tsc -w -p ./src",
     "clear": "rimraf lib",
