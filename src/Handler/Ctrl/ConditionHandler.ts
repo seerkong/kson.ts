@@ -50,11 +50,13 @@ export class ConditionHandler {
     stateMgr.addOp(OpCode.Node_RunNode, condition);
     // 如果条件判断失败，调到下个条件判断，或者是else分支
     stateMgr.addOp(OpCode.Ctrl_JumpIfFalse, curOpStackTopIdx + 1);
-    // 如果条件判断成功，销毁当前的frame. 
-    // 在栈中删除进行下个条件分支判断的指令
-    // stateMgr.addOp(OpCode.ValStack_PopFrameIgnoreResult);
-    stateMgr.addOp(OpCode.OpStack_RemoveNextNext);
+    // 如果条件判断成功，运行对应的判断成功的分支后，跳转到curOpStackTopIdx,即ValStack_PopFrameAndPushTopVal
     stateMgr.addOp(OpCode.Node_RunBlock, ifTrueClause);
+    stateMgr.addOp(OpCode.Ctrl_Jump, curOpStackTopIdx);
+    // 上面两个指令，也可以实现为
+    // stateMgr.addOp(OpCode.OpStack_RemoveNextNext);
+    // stateMgr.addOp(OpCode.Node_RunBlock, ifTrueClause);
+
 
     // 如果条件判断失败，会执行下面的指令
     if (pairIdx < (exprAndBlockPairs.length - 1)) {

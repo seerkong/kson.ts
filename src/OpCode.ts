@@ -29,6 +29,7 @@ export enum OpCode {
     
     Ctrl_RunDeclareVar,
     Ctrl_RunSetEnv,
+    Ctrl_Jump,
     Ctrl_JumpIfFalse,
     Ctrl_ConditionPair,
     Ctrl_ForEachLoop,

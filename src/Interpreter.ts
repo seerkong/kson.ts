@@ -13,7 +13,6 @@ import { OpStackHandler } from "./Handler/OpStackHandler";
 import { ValueStackHandler } from "./Handler/ValueStackHandler";
 import { BlockHandler } from './Handler/Node/BlockHandler';
 import { ArrayHandler } from './Handler/Node/ArrayHandler';
-import { JumpIfFalseHandler } from './Handler/Ctrl/JumpIfFalse';
 import { ForeachHandler } from './Handler/Ctrl/ForeachHandler';
 import { HostFunctions } from './HostSupport/HostFunctions';
 
@@ -97,8 +96,11 @@ export class Interpreter {
             case OpCode.Ctrl_RunSetEnv:
                 SetEnvHandler.runSetEnv(stateMgr, opContState);
                 break;
+            case OpCode.Ctrl_Jump:
+                OpStackHandler.runJump(stateMgr, opContState);
+                break;
             case OpCode.Ctrl_JumpIfFalse:
-                JumpIfFalseHandler.runJumpIfFalse(stateMgr, opContState);
+                OpStackHandler.runJumpIfFalse(stateMgr, opContState);
                 break;
             case OpCode.Ctrl_ConditionPair:
                 ConditionHandler.runConditionPair(stateMgr, opContState);
